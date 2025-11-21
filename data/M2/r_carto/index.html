@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projet R - Cartographie Thématique</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" rel="stylesheet" />
+    
+    <style>
+        /* Petits ajustements */
+        body { background-color: #d8bea3; }
+        /* Style du conteneur de code */
+        .code-wrapper {
+            background-color: #2d2d2d;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            margin-bottom: 2rem;
+            border: 1px solid #444;
+        }
+        .code-header {
+            background-color: #1e1e1e;
+            padding: 10px 15px;
+            border-bottom: 1px solid #444;
+            color: #aaa;
+            font-size: 0.9rem;
+            font-family: monospace;
+            border-radius: 8px 8px 0 0;
+        }
+        pre { margin: 0 !important; border-radius: 0 0 8px 8px !important; }
+        
+        /* Style des images et du zoom */
+        .map-card {
+            background: white;
+            padding: 10px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            margin-bottom: 20px;
+            cursor: pointer; /* Indique que c'est cliquable */
+            transition: transform 0.2s;
+        }
+        .map-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+        }
+        .map-img { width: 100%; border-radius: 4px; }
+        
+        /* Sidebar collante */
+        .sidebar { position: sticky; top: 20px; }
+
+        /* Style pour le curseur "Zoom" */
+        .zoom-icon {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: rgba(0,0,0,0.6);
+            color: white;
+            padding: 5px;
+            border-radius: 4px;
+            opacity: 0;
+            transition: opacity 0.2s;
+        }
+        .map-card:hover .zoom-icon { opacity: 1; }
+    </style>
+</head>
+<body>
+
+    <div class="container my-5">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="../../../index.html">Portfolio</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Cartographie R</li></a></li>
+            </ol>
+        </nav>
+
+<div class="row">
+            <div class="col-lg-7">
+                
+                <div class="mb-5">
+                    <h3 class="h4 text-secondary">Étape 1 : Import et Visualisation Brute</h3>
+                    <p>Importation des couches géographiques depuis un GeoPackage et première visualisation de la localisation des offres.</p>
+                    
+                    <div class="code-wrapper">
+                        <div class="code-header">script_carte_1.R</div>
+                        <pre><code class="language-r">
+library(sf)
+library(mapsf)
+
+# 1. Importation des données (GeoPackage)
+# -------------------------------------------------------
+route  <- st_read(dsn = "data/bnb.gpkg", layer = "route", quiet = TRUE)
+rail   <- st_read(dsn = "data/bnb.gpkg", layer = "rail", quiet = TRUE)
+parc   <- st_read(dsn = "data/bnb.gpkg", layer = "parc", quiet = TRUE)
+arrd   <- st_read(dsn = "data/bnb.gpkg", layer = "arrdts", quiet = TRUE)
+airbnb <- st_read(dsn = "data/bnb.gpkg", layer = "airbnb", quiet = TRUE)
+
+# 2. Création de la carte de localisation
+# -------------------------------------------------------
+mf_theme("darkula") # Thème sombre pour le contraste
+
+# Export image
+mf_export(x = arrd, filename = "output/map_airbnb.png", width = 800)
+
+# Superposition des couches
+mf_map(x = arrd, col = "grey", border = "white", add = TRUE)
+mf_map(x = parc, col = "#4d9e3a", border = NA, add = TRUE) # Parcs en vert
+mf_map(x = route, col = "grey50", lwd = 0.5, add = TRUE)
+mf_map(x = rail, col = "white", lwd = 1, add = TRUE)
+
+# Les points Airbnb (en rouge)
+mf_map(x = airbnb, col = "red", pch = 20, cex = 0.3, add = TRUE)
+
+mf_layout(title = "Localisation des Airbnb à Paris", 
+          credits = "Auteur: Jules NKONGO SAME | Source: Inside Airbnb",
+          scale = TRUE)
+dev.off()
+                        </code></pre>
+                    </div>
+                </div>
+
+                <div class="mb-5">
+                    <h3 class="h4 text-secondary">Étape 2 : Analyse par Carroyage (Grid)</h3>
+                    <p>Pour pallier la densité de points illisible, création d'une grille régulière (200m) pour calculer le prix médian par secteur.</p>
+                    
+                    <div class="code-wrapper">
+                        <div class="code-header">script_carte_2.R</div>
+                        <pre><code class="language-r">
+# 1. Création du maillage régulier (200x200m)
+# -------------------------------------------------------
+grid <- st_make_grid(arrd, cellsize = 200, square = TRUE)
+grid_sf <- st_sf(id = 1:length(grid), geometry = grid)
+
+# 2. Intersection spatiale et calculs statistiques
+# -------------------------------------------------------
+# On compte les points dans chaque carreau
+grid_sf$nb_airbnb <- lengths(st_intersects(grid_sf, airbnb))
+
+# On ne garde que les carreaux avec au moins 5 annonces (significativité)
+grid_sf_5 <- grid_sf[grid_sf$nb_airbnb > 4, ]
+
+# Jointure spatiale pour récupérer les prix
+inter <- st_join(grid_sf_5, airbnb)
+
+# Agrégation : Calcul du PRIX MÉDIAN par carreau
+grid_agg <- aggregate(
+  x = inter$price, 
+  by = list(id = inter$id), 
+  FUN = median
+)
+
+# Jointure du résultat sur la grille géométrique
+grid_sf_5_tr <- merge(grid_sf_5, grid_agg, by = "id")
+names(grid_sf_5_tr)[3] <- "prix_median"
+
+# 3. Cartographie Choroplèthe (Discrétisation Fisher)
+# -------------------------------------------------------
+mf_export(x = arrd, filename = "output/map_grid_price.png", width = 800)
+mf_map(x = arrd, col = "grey90", border = "white", add = TRUE)
+
+mf_map(
+  x = grid_sf_5_tr, 
+  var = "prix_median", 
+  type = "choro",
+  breaks = "fisher", # Méthode de Fisher pour maximiser l'homogénéité
+  pal = "Reds 3",    # Palette de rouges
+  border = NA, 
+  leg_title = "Prix médian (€)",
+  add = TRUE
+)
+
+mf_layout(title = "Prix médian des locations (Carroyage 200m)")
+dev.off()
+                        </code></pre>
+                    </div>
+                </div>
+
+                <div class="mb-5">
+                    <h3 class="h4 text-secondary">Étape 3 : Analyse Multivariée par Arrondissement</h3>
+                    <p>Agrégation finale par quartier pour croiser deux variables : le prix moyen (couleur) et la capacité d'accueil totale (taille des cercles).</p>
+                    
+                    <div class="code-wrapper">
+                        <div class="code-header">script_carte_3.R</div>
+                        <pre><code class="language-r">
+# 1. Agrégation spatiale par Arrondissement
+# -------------------------------------------------------
+# Jointure spatiale des arrondissements et des points
+inter_arrd <- st_join(arrd, airbnb)
+
+# Calcul du prix moyen et de la capacité totale par arrondissement
+stat_arrd <- aggregate(
+  list(prix_moyen = inter_arrd$price, capacite = inter_arrd$accommodates),
+  by = list(INSEE_COM = inter_arrd$INSEE_COM),
+  FUN = mean # Simplifié pour l'exemple (mean pour prix, sum pour capacité)
+)
+
+# 2. Carte bivariée (Stock + Ratio)
+# -------------------------------------------------------
+mf_export(x = arrd, filename = "output/map_price_accom.png", width = 800)
+mf_map(x = arrd, col = "grey95", border = "grey50")
+
+# Cartographie des Symboles Proportionnels Colorés
+mf_map(
+  x = stat_arrd_map,      # Données agrégées
+  var = c("capacite", "prix_moyen"), # 1. Taille (Capacité), 2. Couleur (Prix)
+  type = "prop_choro",
+  border = "grey50",
+  lwd = 1,
+  leg_title = c("Capacité Totale (lits)", "Prix Moyen (€)"),
+  breaks = "quantile",
+  nbreaks = 4,
+  pal = "Viridis",
+  add = TRUE
+)
+
+mf_layout(title = "Capacité d'accueil et Prix moyen par Arrondissement")
+dev.off()
+                        </code></pre>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="col-lg-5">
+                <div class="sidebar">
+                    <div class="alert alert-light border mb-4 shadow-sm">
+                        <small>ℹ️ Cliquez sur une carte pour l'agrandir.</small>
+                    </div>
+
+                    <div class="map-card position-relative" data-bs-toggle="modal" data-bs-target="#imageModal" onclick="updateModal(this)">
+                        <h6 class="text-uppercase text-muted small fw-bold">1. Localisation Brute</h6>
+                        <img src="map_airbnb.png" alt="Carte de localisation des Airbnb" class="map-img">
+                        <div class="mt-2 small text-muted">Affichage de tous les points (~60k) sur fond de carte vectoriel.</div>
+                    </div>
+
+                    <div class="map-card position-relative" data-bs-toggle="modal" data-bs-target="#imageModal" onclick="updateModal(this)">
+                        <h6 class="text-uppercase text-muted small fw-bold">2. Prix Médian (Grille)</h6>
+                        <img src="map_grid_price.png" alt="Carte des prix médians par grille" class="map-img">
+                        <div class="mt-2 small text-muted">Lissage par carroyage pour identifier les zones onéreuses.</div>
+                    </div>
+
+                    <div class="map-card position-relative" data-bs-toggle="modal" data-bs-target="#imageModal" onclick="updateModal(this)">
+                        <h6 class="text-uppercase text-muted small fw-bold">3. Capacité & Prix</h6>
+                        <img src="map_price_accom.png" alt="Carte bivariée prix et capacité" class="map-img">
+                        <div class="mt-2 small text-muted">Analyse synthétique par unité administrative (Méthode Bertin).</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="imageModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-xl modal-dialog-centered">
+            <div class="modal-content bg-dark">
+                <div class="modal-header border-0">
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body text-center p-0">
+                    <img src="" id="modalImage" class="img-fluid" style="max-height: 85vh;" alt="Carte agrandie">
+                </div>
+                <div class="modal-footer border-0 justify-content-center">
+                    <p id="modalCaption" class="text-light mb-0"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-r.min.js"></script>
+
+    <script>
+        // Fonction pour mettre à jour l'image du modal au clic
+        function updateModal(element) {
+            var imgSrc = element.querySelector('img').src;
+            var imgAlt = element.querySelector('img').alt;
+            var imgDesc = element.querySelector('.text-muted:last-child').innerText; // Récupère la description
+            
+            document.getElementById('modalImage').src = imgSrc;
+            document.getElementById('modalCaption').innerText = imgAlt + " - " + imgDesc;
+        }
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,156 @@
+[
+  {
+    "id": "m2-maya",
+    "titre": "Analyse Multi-Échelle des Écosystèmes Maya (M2 G2M - 2024/25)",
+    "description": "Projet de groupe en M2 sur les Écosystèmes et Vestiges Maya. Utilisation de données LiDAR et analyses spatiales pour le territoire de Naachtùn.",
+    "image": "data/img/naachtun.png",
+    "tags": ["Master 2", "SIG", "Analyse Spatiale", "Télédétection"],
+    "lien": {
+      "type": "github",
+      "url": "https://blvelotvs.github.io/Site_Naachtun/"
+    }
+  },
+  {
+    "id": "m2-arcpy-corse",
+    "titre": "Analyse d'Accessibilité aux hôpitaux en Corse (M2 G2M - 2024/25)",
+    "description": "Projet de script ArcPy (Python) avec une toolbox ArcGIS Pro pour analyser l'accessibilité spatiale de chaque commune aux hôpitaux en Corse. Calcul des distances et classification les résultats.",
+    "image": "data/img/corse.png",
+    "tags": ["Master 2", "SIG", "Analyse Spatiale", "ArcPy", "Python", "Automatisation"],
+    "lien": {
+      "type": "pdf",
+      "url": "data/M2/Arcpy_accessibilite_Corse.pdf"
+    }
+  },
+  {
+    "id": "m2-r-carto",
+    "titre": "Cartographie Thématique avec R (M2 G2M - 2024/25)",
+    "description": "Projet d'automatisation cartographique avec le langage R (packages sf, mapsf). Analyse des prix et densités Airbnb à Paris (Carroyage, Cartes Choroplèthes, Analyse statistique).",
+    "image": "data/M2/r_carto/map_grid_price.png",
+    "tags": ["Master 2", "R", "mapsf", "SIG"],
+    "lien": {
+      "type": "html",
+      "url": "data/M2/r_carto/index.html"
+    }
+  },
+  {
+    "id": "m2-geomarketing",
+    "titre": "Étude d'Implantation Commerciale (M2) - Géomarketing (M2 G2M - 2024/25)",
+    "description": "Étude de cas sur l'optimisation d'un réseau de boutiques de téléphonie en Île-de-France. Analyse de la zone de chalandise, ciblage sociodémographique et propositions d'implantations stratégiques avec GeoConcept.",
+    "image": "data/img/geomarketing-map.png",
+    "tags": ["Master 2", "Géomarketing", "GeoConcept", "Analyse Spatiale", "SIG"],
+    "lien": {
+      "type": "pdf",
+      "url": "data/M2/Projet_final_Geomarketing.pdf"
+    }
+  },
+  {
+    "id": "m2-python-folium",
+    "titre": "Cartographie Interactive & Python (M2 G2M - 2024/25)",
+    "description": "Création de cartes web dynamiques avec Python (Folium, GeoPandas). Projets incluant une carte interactive des densités (France/Belgique) et des scripts d'animation temporelle (Heatmap).",
+    "image": "data/img/folium_map.png",
+    "tags": ["Master 2", "Python", "Folium", "GeoPandas", "Web"],
+    "lien": {
+      "type": "html",
+      "url": "data/M2/ADYC/Plugins/resultats/map_france_belgique_populations_interactive.html"
+    }
+  },
+    {
+    "id": "m2-saur",
+    "titre": "Outil d'Optimisation de Tournées (Projet de Mémoire M2 G2M - 2023/25)",
+    "description": "Conception d'un outil SIG automatisé (FME, Python/ArcPy, Network Analyst) pour optimiser les tournées de relève clientèle. Projet de 2 ans réalisé dans le cadre de mon alternance chez SAUR (2023-2025).",
+    "image": "data/img/soutenance.jpg",
+    "tags": ["Master 2", "SIG", "Automatisation", "ArcPy", "FME", "Python"],
+    "lien": {
+      "type": "email",
+      "url": "mailto:nkongosamepro@gmail.com?subject=Demande d'accès au projet de mémoire SAUR"
+    }
+  },
+  {
+    "id": "m1-teol",
+    "titre": "Analyse Spatiale du Tramway Express de l'Ouest Lyonnais (M1 G2M - 2023/24)",
+    "description": "Analyse spatiale avancée du projet de Tramway Express de l'Ouest Lyonnais (TEOL) en utilisant QGIS et ArcGIS Pro pour étudier le tracé le plus optimisé compte tenu des réalités spatio-économiques.",
+    "image": "data/img/map_TEOL.png",
+    "tags": ["Master 1", "SIG", "Analyse Spatiale"],
+    "lien": {
+      "type": "pdf",
+      "url": "data/M1/Projet_TEOL_vfinal.pdf"
+    }
+  },
+  {
+    "id": "m1-lyonlines",
+    "titre": "Projet LyonLines (M1 G2M - 2023/24)",
+    "description": "Site Web statique pour la visualisation des lignes de métros de Lyon. (Projet M1 HTML/CSS/JS)",
+    "image": "data/img/lyon_lines.png",
+    "tags": ["Master 1", "Web", "HTML/CSS", "Leaflet"],
+    "lien": {
+      "type": "github",
+      "url": "https://blvelotvs.github.io/Lyon-Lines/"
+    }
+  },
+  {
+    "id": "m1-openlayers",
+    "titre": "Projet OpenLayers (M1 G2M - 2023/24)",
+    "description": "Application de cartographie web interactive (JavaScript Avancé) avec OpenLayers. Permet d'explorer et d'interroger les données des régions françaises.",
+    "image": "data/img/open_layers.png",
+    "tags": ["Master 1", "Web", "JavaScript", "OpenLayers"],
+    "lien": {
+      "type": "html",
+      "url": "data/M1/js_avancé/projet-final-2/index.html"
+    }
+  },
+  {
+    "id": "m1-video-promo",
+    "titre": "Vidéo Promotionnelle Master G2M (M1 G2M - 2023/24)",
+    "description": "Réalisation d'une vidéo promotionnelle pour le Master Géomatique (G2M). Scénarisation, tournage et montage avancé sur Adobe Premiere Pro pour présenter la vie étudiante et la formation.",
+    "image": "https://img.youtube.com/vi/Gy_0fTPGEMg/maxresdefault.jpg",
+    "tags": ["Master 1", "Autres", "Communication", "Adobe Premiere Pro", "Multimédia"],
+    "lien": {
+      "type": "youtube",
+      "url": "https://www.youtube.com/watch?v=Gy_0fTPGEMg"
+    }
+  },
+    {
+    "id": "m1-ethiopie",
+    "titre": "Conception d'un SIG pour l'Institut de Paléontologie (M1 G2M - 2023/24)",
+    "description": "Projet des étudiants de M1 pour l'Institut de Paléontologie, conception d'un SIG pour le suivi de missions de fouilles sur le site de Fejej (Ethiopie).",
+    "image": "data/img/fejej.png",
+    "tags": ["Master 1", "SIG", "Base de Données"],
+    "lien": {
+      "type": "pdf",
+      "url": "data/M1/FEJEJ_DM_v_final.pdf"
+    }
+  },
+  {
+    "id": "lp-cimetieres",
+    "titre": "Application Web de Gestion des Cimetières (LP SIG WEB - 2022/23)",
+    "description": "Conception d'une application web complète en binôme pour la gestion des concessions et des emplacements dans les cimetières.",
+    "image": "data/img/cemetery.png",
+    "tags": ["Licence Pro", "Web", "JavaScript", "Base de Données"],
+    "lien": {
+      "type": "pdf",
+      "url": "data/LP/Rapport_Gestion_Cimetiere.pdf"
+    }
+  },
+  {
+    "id": "lp-veolia",
+    "titre": "Automatisation de Comparaison de Données SIG (LP SIG WEB - 2022/23)",
+    "description": "Projet d'automatisation en Python pour la comparaison de données SIG entre deux sources différentes afin d'identifier les incohérences. Réalisé dans le cadre de mon alternance chez Veolia Eau d'Ile de France (VEDIF).",
+    "image": "data/img/rapport_LP.png",
+    "tags": ["Licence Pro", "SIG", "Analyse Spatiale", "Python"],
+    "lien": {
+      "type": "email",
+      "url": "mailto:nkongosamepro@gmail.com?subject=Demande d'accès au projet de Rapport d'apprentissage VEDIF"
+    }
+  },
+  {
+    "id": "l3-biodechets",
+    "titre": "Diagnostic Aménagement Bio-déchets (L3 Géographie-Aménagement - 2021/22)",
+    "description": "Diagnostic territorial et enquête de terrain réalisés en groupe sur des projets d'aménagement de bio-déchets à Lyon 1er.",
+    "image": "data/img/composteur.jpg",
+    "tags": ["Licence", "Aménagement", "Autres"],
+    "lien": {
+      "type": "html",
+      "url": "https://prezi.com/p/umoqhpxoo7ie/dossier-biodechets/"
+    }
+  }
+]

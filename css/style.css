@@ -1,0 +1,229 @@
+/* Palette de couleurs (inchangée, mais on va l'utiliser) */
+:root {
+    --bs-primary: #0dcaf0; /* Bleu ciel */
+    --bs-secondary: #fd7e14; /* Orange */
+    --bs-dark: #212529;
+}
+
+/* 1. On applique l'image de fond au corps de la page */
+body {
+    /* On déplace le code de .bg-light ici */
+    background-image: 
+        /* J'ai éclairci le filtre à 85% (0.85) au lieu de 50% (0.5)  
+           pour que le fond soit plus discret et le texte plus lisible */
+        linear-gradient(rgba(248, 249, 250, 0.65), rgba(248, 249, 250, 0.65)),
+        /* Votre image  */
+        url('../data/img/tcl.png');
+
+    /* Comportement de l'image [cite: 1] */
+    background-size: cover;
+    background-position: center center;
+    background-attachment: fixed;
+
+    /* Couleur de repli  */
+    background-color: #f8f9fa;
+}
+
+/* 2. Les sections redeviennent blanches et opaques */
+.bg-light {
+    background-color: #ffffff; /* Fond blanc simple */
+}
+
+/* NOUVEAU: Utiliser l'ORANGE pour les titres de section */
+h2 {
+    color: var(--bs-secondary); /* Couleur Orange */
+    font-weight: 700;
+}
+
+/* Style de la photo de profil (inchangé) */
+.profile-pic {
+    max-width: 250px;
+    height: auto;
+    border-radius: 50%;
+    border: 5px solid white;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+#accueil .lead {
+    font-size: 1.5rem;
+    font-weight: 300;
+}
+
+/* 3. On ajoute le fond orange au bloc de texte du header */
+#accueil .col-md-8 {
+    background-color: rgba(253, 126, 20, 0.1); /* Votre orange (--bs-secondary) à 10% d'opacité */
+    border: 1px solid rgba(253, 126, 20, 0.2); /* Petite bordure orange à 20% */
+    border-radius: 8px; /* Coins arrondis */
+    padding: 1.5rem; /* Un peu d'air à l'intérieur */
+}
+
+/* 4. (Bonus) On force le titre "Géomaticien" à être sombre 
+      car il était bleu et c'est peu lisible sur l'orange */
+#accueil .col-md-8 .text-primary {
+    color: var(--bs-dark) !important;
+}
+
+/* NOUVEAU: Interactivité sur les cartes de projet */
+.project-card {
+    transition: all 0.3s ease-in-out;
+}
+
+.project-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15); /* Ombre plus prononcée */
+}
+
+/* NOUVEAU: Interactivité sur l'image de la carte */
+.card .card-img-top {
+    width: 100%;            /* Prend toute la largeur de la carte */
+    height: 250px;          /* Force une hauteur fixe (vous pouvez ajuster: 200px, 250px...) */
+    object-fit: contain;      /* Recadre l'image pour remplir le cadre sans déformation */
+    transition: transform 0.4s ease;
+}
+
+.card:hover .card-img-top {
+    transform: scale(1.05); /* Léger zoom sur l'image au survol */
+}
+
+/* NOUVEAU: Bouton "Voir le projet" en ORANGE */
+.card-footer .btn-primary {
+    background-color: var(--bs-secondary);
+    border-color: var(--bs-secondary);
+    color: white; /* Texte blanc sur bouton orange */
+    font-weight: 500;
+}
+.card-footer .btn-primary:hover {
+    background-color: #e67312; /* Orange plus foncé au survol */
+    border-color: #d66a0f;
+}
+
+/* Style des badges (tags) */
+.card-body .badge {
+    font-size: 0.75rem;
+    margin-bottom: 5px;
+    background-color: #6c757d; /* Gris pour les tags */
+}
+
+/* Style des filtres (BLEU CIEL) */
+.filter-btn.active,
+.filter-btn:hover {
+    background-color: var(--bs-primary);
+    border-color: var(--bs-primary);
+    color: var(--bs-dark);
+}
+
+.filter-btn {
+    background-color: white;
+    color: var(--bs-primary);
+    border-color: var(--bs-primary);
+    font-weight: 500    ;
+}
+
+/* Classe pour cacher les projets (inchangée) */
+.project-card.hide {
+    transform: scale(0.9);
+    opacity: 0;
+    width: 0;
+    height: 0;
+    padding: 0;
+    margin: 0;
+    overflow: hidden;
+}
+
+/* Conteneur de la carte Leaflet (inchangé) */
+#map {
+    height: 500px;
+    width: 100%;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+/* Légende de la carte (inchangée) */
+.legend {
+    padding: 6px 8px;
+    font: 14px Arial, Helvetica, sans-serif;
+    background: rgba(255, 255, 255, 0.8);
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+    border-radius: 5px;
+    line-height: 18px;
+    color: #555;
+}
+
+.legend i {
+    width: 18px;
+    height: 18px;
+    float: left;
+    margin-right: 8px;
+    opacity: 0.7;
+    border-radius: 50%;
+}
+
+/* 1. Style du bouton "Retour en haut" */
+#btn-back-to-top {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    display: none; /* Caché par défaut */
+    opacity: 0;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    z-index: 999;
+    background-color: var(--bs-secondary); /* Orange */
+    border: none;
+    color: white;
+    font-weight: bold;
+    transition: opacity 0.3s, transform 0.3s;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+}
+
+#btn-back-to-top:hover {
+    transform: scale(1.1);
+    background-color: #e67312;
+}
+
+/* 2. Effet sur l'image cliquable */
+.project-link {
+    display: block;
+    position: relative;
+    overflow: hidden; /* Important pour que le zoom ne dépasse pas */
+}
+
+.project-link img {
+    transition: transform 0.5s ease;
+}
+
+.project-link:hover img {
+    transform: scale(1.05); /* Zoom léger au survol */
+    opacity: 0.9;
+}
+
+/* (Optionnel) Petit curseur pointer pour bien montrer que c'est cliquable */
+.project-card {
+    cursor: default; 
+}
+.project-link, .btn-primary {
+    cursor: pointer;
+}
+
+/* Styles pour les icônes du footer */
+.social-links {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 15px;
+}
+
+.social-icon img {
+    width: 40px;
+    height: 40px;
+    object-fit: contain;
+    transition: transform 0.3s ease, filter 0.3s ease;
+
+    /* Inverser la couleur des icônes pour les rendre blanches */
+    filter: invert(1) brightness(100%);
+}
+
+.social-icon:hover img {
+    transform: scale(1.2);
+}

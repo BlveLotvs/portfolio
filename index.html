@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio - Jules Nkongo Same</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">Jules Nkongo Same</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link active" href="#accueil">Accueil</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#projets">Projets</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#parcours">Mon Parcours</a></li>
+                    <li class="nav-item"><a class="nav-link" href="CV_PRO_Jules_NKONGO_SAME.pdf" target="_blank">Mon CV (PDF)</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <header id="accueil" class="py-5 bg-light">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-4 text-center" data-aos="fade-right">
+                    <img src="data/img/profil.jpg" alt="Jules Nkongo Same" class="profile-pic img-fluid">
+                </div>
+                <div class="col-md-8" data-aos="fade-left" data-aos-delay="200">
+                    <h1 class="display-4">Jules Nkongo Same</h1>
+                    <p id="typing-effect" class="lead text-primary">Géomaticien | Développeur SIG Web</p>
+                    <p><strong>Diplômé d'un Master G2M</strong> (Géomatique, Géodécisionnel, Géomarketing et Multimédia) en alternance à l'Université Paris 8</p>
+                    <p>Voici mon portfolio interactif. Passionné de cartographie, je combine l'analyse spatiale et le développement web pour créer des solutions géomatiques complètes. Découvrez ci-dessous mes projets universitaires et mon parcours.</p>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main id="projets" class="container my-5">
+        <h2 class="text-center mb-4" data-aos="fade-up">Mes Projets</h2>
+
+        <div id="filter-buttons" class="text-center mb-4" data-aos="fade-up" data-aos-delay="100">
+            <button class="btn btn-primary filter-btn" data-filter="all">Tous</button>
+            <button class="btn btn-outline-secondary filter-btn" data-filter="Master 2">Master 2</button>
+            <button class="btn btn-outline-secondary filter-btn" data-filter="Master 1">Master 1</button>
+            <button class="btn btn-outline-secondary filter-btn" data-filter="Licence Pro">Licence Pro</button>
+            <button class="btn btn-outline-secondary filter-btn" data-filter="Licence">Licence</button>
+            <button class="btn btn-outline-secondary filter-btn" data-filter="Web">Web</button>
+            <button class="btn btn-outline-secondary filter-btn" data-filter="SIG">SIG</button>
+            <button class="btn btn-outline-secondary filter-btn" data-filter="Autres">Autres</button>
+        </div>
+
+        <div id="project-grid" class="row g-4" data-aos="fade-up" data-aos-delay="200">
+            </div>
+    </main>
+
+    <section id="parcours" class="container-fluid my-5 py-5 bg-light">
+        <div class="container">
+            <h2 class="text-center mb-4" data-aos="fade-up">Mon Parcours (Formation & Expérience)</h2>
+            <p class="text-center text-muted" data-aos="fade-up" data-aos-delay="100">Une carte interactive de mes lieux d'études et d'expériences professionnelles.</p>
+            <div id="map" data-aos="fade-up" data-aos-delay="200"></div>
+        </div>
+    </section>
+
+<footer id="contact" class="text-center py-4 bg-dark text-white" data-aos="fade-up">
+        <div class="container">
+            <h4 class="mb-3">Contactez-moi</h4>
+            <p class="mb-4">
+                <a href="mailto:nkongosamepro@gmail.com" class="text-white text-decoration-none">
+                    nkongosamepro@gmail.com
+                </a> 
+                <span class="mx-2">|</span> 
+                07 83 01 84 71
+            </p>
+            
+            <div class="social-links">
+                <a href="https://github.com/BlveLotvs" target="_blank" class="social-icon me-3" title="Mon GitHub">
+                    <img src="data/icons/github.png" alt="GitHub">
+                </a>
+                <a href="https://www.linkedin.com/in/jules-n-904407203/" target="_blank" class="social-icon" title="Mon LinkedIn">
+                    <img src="data/icons/linkedin.png" alt="LinkedIn">
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    
+    <script>
+        AOS.init({
+            duration: 700, // Durée de l'animation
+            once: true // L'animation ne se joue qu'une fois
+        });
+    </script>
+    
+    <script src="js/main.js"></script>
+    <script src="js/map.js"></script>
+    <script src="js/styles.js"></script>
+    <script src="https://unpkg.com/typeit@8.7.1/dist/index.umd.js"></script>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        new TypeIt('#typing-effect', {
+            speed: 60,
+            waitUntilVisible: true,
+            loop: false
+        })
+        .type(' Géomaticien', { delay: 400 })
+        .pause(500)
+        .delete(11)
+        .type('Développeur SIG Web', { delay: 400 })
+        .pause(500)
+        .delete(19)
+        .go();
+    });
+</script>
+<button type="button" class="btn btn-primary btn-lg" id="btn-back-to-top">
+        ↑
+</button>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

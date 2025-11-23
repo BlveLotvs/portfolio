@@ -2,7 +2,7 @@
   {
     "id": "m2-maya",
     "titre": "Analyse Multi-Échelle des Écosystèmes Maya (M2 G2M - 2024/25)",
-    "description": "Projet de groupe en M2 sur les Écosystèmes et Vestiges Maya. Utilisation de données LiDAR et analyses spatiales pour le territoire de Naachtùn.",
+    "description": "Projet de groupe en M2 sur les Écosystèmes et Vestiges Maya. Utilisation de données LiDAR et analyses spatiales pour le territoire de Naachtùn (Guatemala-Mexique).",
     "image": "data/img/naachtun.png",
     "tags": ["Master 2", "SIG", "Analyse Spatiale", "Télédétection"],
     "lien": {
@@ -24,7 +24,7 @@
   {
     "id": "m2-r-carto",
     "titre": "Cartographie Thématique avec R (M2 G2M - 2024/25)",
-    "description": "Projet d'automatisation cartographique avec le langage R (packages sf, mapsf). Analyse des prix et densités Airbnb à Paris (Carroyage, Cartes Choroplèthes, Analyse statistique).",
+    "description": "Projet d'automatisation cartographique avec le langage R (packages sf, mapsf). Analyse des prix et densités Airbnb à Paris 12 et 13 (Carroyage, Cartes thématiques, Analyse statistique).",
     "image": "data/M2/r_carto/map_grid_price.png",
     "tags": ["Master 2", "R", "mapsf", "SIG"],
     "lien": {
@@ -34,7 +34,7 @@
   },
   {
     "id": "m2-geomarketing",
-    "titre": "Étude d'Implantation Commerciale (M2) - Géomarketing (M2 G2M - 2024/25)",
+    "titre": "Étude d'Implantation Commerciale sur GeoConcept - Géomarketing (M2 G2M - 2024/25)",
     "description": "Étude de cas sur l'optimisation d'un réseau de boutiques de téléphonie en Île-de-France. Analyse de la zone de chalandise, ciblage sociodémographique et propositions d'implantations stratégiques avec GeoConcept.",
     "image": "data/img/geomarketing-map.png",
     "tags": ["Master 2", "Géomarketing", "GeoConcept", "Analyse Spatiale", "SIG"],
@@ -79,7 +79,7 @@
   {
     "id": "m1-lyonlines",
     "titre": "Projet LyonLines (M1 G2M - 2023/24)",
-    "description": "Site Web statique pour la visualisation des lignes de métros de Lyon. (Projet M1 HTML/CSS/JS)",
+    "description": "Site Web statique d'information pour la visualisation des lignes de métros de Lyon. (Projet M1 HTML/CSS/JS)",
     "image": "data/img/lyon_lines.png",
     "tags": ["Master 1", "Web", "HTML/CSS", "Leaflet"],
     "lien": {

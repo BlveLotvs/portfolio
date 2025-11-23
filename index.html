@@ -8,6 +8,8 @@
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicon/devicon@latest/devicon.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
 
@@ -20,9 +22,10 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item"><a class="nav-link active" href="#accueil">Accueil</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#compétences">Compétences</a></li>
                     <li class="nav-item"><a class="nav-link" href="#projets">Projets</a></li>
                     <li class="nav-item"><a class="nav-link" href="#parcours">Mon Parcours</a></li>
-                    <li class="nav-item"><a class="nav-link" href="CV_PRO_Jules_NKONGO_SAME.pdf" target="_blank">Mon CV (PDF)</a></li>
+                    <li class="nav-item"><a class="nav-link" href="CV_PRO_NKONGO_SAME.pdf" target="_blank">Mon CV (PDF)</a></li>
                     <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
                 </ul>
             </div>
@@ -38,12 +41,78 @@
                 <div class="col-md-8" data-aos="fade-left" data-aos-delay="200">
                     <h1 class="display-4">Jules Nkongo Same</h1>
                     <p id="typing-effect" class="lead text-primary">Géomaticien | Développeur SIG Web</p>
-                    <p><strong>Diplômé d'un Master G2M</strong> (Géomatique, Géodécisionnel, Géomarketing et Multimédia) en alternance à l'Université Paris 8</p>
+                    <p>Diplômé d'un <strong>Master G2M</strong> (Géomatique, Géodécisionnel, Géomarketing et Multimédia) en alternance à l'Université Paris 8.</p>
                     <p>Voici mon portfolio interactif. Passionné de cartographie, je combine l'analyse spatiale et le développement web pour créer des solutions géomatiques complètes. Découvrez ci-dessous mes projets universitaires et mon parcours.</p>
                 </div>
             </div>
         </div>
     </header>
+
+    <section id="competences" class="container my-5">
+        <h2 class="text-center mb-5" data-aos="fade-up">Mes Compétences Techniques</h2>
+
+        <div class="row g-4">
+            
+            <div class="col-md-6" data-aos="fade-up" data-aos-delay="100">
+                <div class="skill-category-card">
+                    <h4 class="skill-title text-primary"><i class="fas fa-globe"></i> Web & Webmapping</h4>
+                    <div class="skill-grid">
+                        <div class="skill-item"><i class="fab fa-html5"></i><span>HTML5</span></div>
+                        <div class="skill-item"><i class="fab fa-css3-alt"></i><span>CSS3</span></div>
+                        <div class="skill-item"><i class="fab fa-js"></i><span>JavaScript</span></div>
+                        <div class="skill-item"><i class="fab fa-php"></i><span>PHP</span></div>
+                        <div class="skill-item"><i class="fab fa-bootstrap"></i><span>Bootstrap</span></div>
+                        
+                        <div class="skill-item"><img src="data/icons/leaflet.png" alt="Leaflet"><span>Leaflet</span></div>
+                        <div class="skill-item"><img src="data/icons/openlayers.png" alt="OpenLayers"><span>OpenLayers</span></div>
+                        <div class="skill-item"><img src="data/icons/django.png" alt="Django"><span>Django</span></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6" data-aos="fade-up" data-aos-delay="200">
+                <div class="skill-category-card">
+                    <h4 class="skill-title text-success"><i class="fas fa-database"></i> Bases de données & SIG</h4>
+                    <div class="skill-grid">
+                        <div class="skill-item"><img src="data/icons/arcgis.png" alt="ArcGIS"><span>ArcGIS Pro</span></div>
+                        <div class="skill-item"><img src="data/icons/qgis.png" alt="QGIS"><span>QGIS</span></div>
+                        <div class="skill-item"><img src="data/icons/geoconcept.png" alt="GeoConcept"><span>GeoConcept</span></div>
+                        <div class="skill-item"><img src="data/icons/postgresql.png" alt="PostgreSQL"><span>PG Admin/PostGIS</span></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6" data-aos="fade-up" data-aos-delay="300">
+                <div class="skill-category-card">
+                    <h4 class="skill-title text-warning"><i class="fas fa-cogs"></i> Automatisation & Analyse</h4>
+                    <div class="skill-grid">
+                        <div class="skill-item"><i class="fab fa-python"></i><span>Python</span></div>
+                        <div class="skill-item"><i class="fab fa-r-project"></i><span>R/R Studio</span></div>
+                        <div class="skill-item"><img src="data/icons/sql.png" alt="SQL"><span>SQL</span></div>
+                        
+                        <div class="skill-item"><img src="data/icons/fme.png" alt="FME"><span>FME</span></div>
+                        
+                        <div class="skill-item"><img src="data/icons/julia.png" alt="Julia"><span>Julia</span></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6" data-aos="fade-up" data-aos-delay="400">
+                <div class="skill-category-card">
+                    <h4 class="skill-title text-info"><i class="fas fa-tools"></i> Outils & Environnement</h4>
+                    <div class="skill-grid">
+                        <div class="skill-item"><i class="fab fa-github"></i><span>GitHub</span></div>
+                        <div class="skill-item"><img src="data/icons/vscode.png" alt="VS Code"><span>VS Code</span></div>
+                        <div class="skill-item"><img src="data/icons/office.png" alt="Suite Office"><span>Suite Office</span></div>
+                        <div class="skill-item"><img src="data/icons/jupyter.png" alt="Jupyter"><span>Jupyter</span></div>
+                        <div class="skill-item"><img src="data/icons/canva.png" alt="Canva"><span>Canva</span></div>
+                        <div class="skill-item"><img src="data/icons/autocad.png" alt="AutoCAD"><span>AutoCAD</span></div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
 
     <main id="projets" class="container my-5">
         <h2 class="text-center mb-4" data-aos="fade-up">Mes Projets</h2>
@@ -68,6 +137,99 @@
             <h2 class="text-center mb-4" data-aos="fade-up">Mon Parcours (Formation & Expérience)</h2>
             <p class="text-center text-muted" data-aos="fade-up" data-aos-delay="100">Une carte interactive de mes lieux d'études et d'expériences professionnelles.</p>
             <div id="map" data-aos="fade-up" data-aos-delay="200"></div>
+        </div>
+
+        <div class="row mt-5">
+            
+            <div class="col-lg-6 mb-4" data-aos="fade-right">
+                <h3 class="mb-4 d-flex align-items-center">
+                    <i class="fas fa-briefcase text-secondary me-3"></i> Expériences Professionnelles
+                </h3>
+
+                <div class="resume-card work mb-4">
+                    <div class="d-flex justify-content-between align-items-start">
+                        <div>
+                            <h5 class="fw-bold">Géomaticien (Alternance)</h5>
+                            <h6 class="text-secondary fw-bold">Groupe SAUR - Serris (77)</h6>
+                            <div class="text-muted small mb-2"><i class="far fa-calendar-alt me-1"></i> Oct 2023 - Sept 2025</div>
+                        </div>
+                        <img src="data/icons/saur.png" alt="SAUR" class="resume-logo">
+                    </div>
+                    <ul class="resume-list">
+                        <li>Conception d'un outil (Python/ArcPy, FME) d'optimisation des tournées de relève de compteurs à eau (destiné à l'echelle national soit + 6 700 communes).</li>
+                        <li>Gestion de la qualité et conformité des données SIG.</li>
+                        <li>Production de web-maps et de cartes thématiques (ArcGIS Pro).</li>
+                    </ul>
+                </div>
+
+                <div class="resume-card work mb-4">
+                    <div class="d-flex justify-content-between align-items-start">
+                        <div>
+                            <h5 class="fw-bold">Technicien Cartographe SIG (Alternance)</h5>
+                            <h6 class="text-secondary fw-bold">Veolia Franciliane (ex VEDIF) - Nanterre (92)</h6>
+                            <div class="text-muted small mb-2"><i class="far fa-calendar-alt me-1"></i> Oct 2022 - Août 2023</div>
+                        </div>
+                        <img src="data/icons/vedif.jpg" alt="Veolia" class="resume-logo">
+                    </div>
+                    <ul class="resume-list">
+                        <li>Mise à jour du réseau SIG d'eau potable du SEDIF, Syndicat des Eaux d'Île de France soit 150 communes.</li>
+                        <li>Automatisation de la comparaison de données géospatiales (Scripts Python).</li>
+                        <li>Analyse et traitement des données géographiques pour les équipes terrain.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="col-lg-6 mb-4" data-aos="fade-left">
+                <h3 class="mb-4 d-flex align-items-center">
+                    <i class="fas fa-graduation-cap text-primary me-3"></i> Formation Académique
+                </h3>
+
+                <div class="resume-card education mb-4">
+                    <div class="d-flex justify-content-between align-items-start">
+                        <div>
+                            <h5 class="fw-bold">Master G2M (Géomatique & Multimédia)</h5>
+                            <h6 class="text-primary fw-bold">Université Paris 8 Saint-Denis </h6>
+                            <div class="text-muted small mb-2"><i class="far fa-calendar-alt me-1"></i> 2023 - 2025</div>
+                        </div>
+                        <img src="data/icons/paris8.png" alt="Paris 8" class="resume-logo">
+                    </div>
+                    <p class="mb-1"><strong>Mention Très Bien</strong></p>
+                    <ul class="resume-list">
+                        <li>Webmapping avancé (Python, JavaScript...), Bases de données spatiales (PostgreSQL, PHP...), Télédétection (LiDAR, traitement d'images)</li>
+                        <li>Mémoire de 2 ans sur la conception d’un outil SIG pour optimiser les itinéraires de tournée clientèle chez SAUR</li>
+                    </ul>
+                </div>
+
+                <div class="resume-card education mb-4">
+                    <div class="d-flex justify-content-between align-items-start">
+                        <div>
+                            <h5 class="fw-bold">Licence Pro SIG Web</h5>
+                            <h6 class="text-primary fw-bold">IUT de Carcassonne (UPVD)</h6>
+                            <div class="text-muted small mb-2"><i class="far fa-calendar-alt me-1"></i> 2022 - 2023</div>
+                        </div>
+                        <img src="data/icons/upvd.png" alt="UPVD" class="resume-logo">
+                    </div>
+                    <ul class="resume-list">
+                        <li>Développement Web (HTML/CSS/JS), Administration de bases de données, SIG Open Source (QGIS, Leaflet...).</li>
+                        <li>Rapport d'apprentissage sur l'automatisation de la comparaison de données géospatiales représentées dans un SIG</li>
+                    </ul>
+                </div>
+
+                <div class="resume-card education mb-4">
+                    <div class="d-flex justify-content-between align-items-start">
+                        <div>
+                            <h5 class="fw-bold">Licence Géographie & Aménagement</h5>
+                            <h6 class="text-primary fw-bold">Université Lyon 3</h6>
+                            <div class="text-muted small mb-2"><i class="far fa-calendar-alt me-1"></i> 2019 - 2022</div>
+                        </div>
+                        <img src="data/icons/lyon3.png" alt="Lyon 3" class="resume-logo">
+                    </div>
+                    <ul class="resume-list">
+                        <li>Spécialité Aménagement en L3</li>
+                    </ul>
+                </div>
+
+            </div>
         </div>
     </section>
 

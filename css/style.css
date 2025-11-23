@@ -227,3 +227,137 @@ h2 {
 .social-icon:hover img {
     transform: scale(1.2);
 }
+
+/* SECTION COMPETENCES */
+
+.skill-category-card {
+    background: white;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    border: 1px solid rgba(0,0,0,0.05);
+    transition: transform 0.3s ease;
+    height: 100%;
+}
+
+.skill-category-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+}
+
+.skill-title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin-bottom: 25px;
+    border-bottom: 2px solid #f0f0f0;
+    padding-bottom: 15px;
+    display: flex;
+    align-items: center;
+}
+.skill-title i {
+    margin-right: 10px;
+}
+
+/* Grille des icônes */
+.skill-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(80px, 1fr)); /* Responsive */
+    gap: 20px;
+    text-align: center;
+}
+
+/* Chaque item (icône + texte) */
+.skill-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #555;
+}
+
+
+/* Style des icônes FontAwesome */
+.skill-item i {
+    font-size: 3rem; /* Grande taille */
+    margin-bottom: 10px;
+    transition: transform 0.3s;
+}
+
+/* Style des Images Locales (pour qu'elles aient la même taille que FontAwesome) */
+.skill-item img {
+    width: 48px !important;  /* Force la largeur */
+    height: 48px !important; /* Force la hauteur */
+    object-fit: contain;
+    margin-bottom: 10px;
+    display: block;
+    transition: transform 0.3s;
+}
+
+/* Animation au survol */
+.skill-item:hover i, 
+.skill-item:hover img {
+    transform: scale(1.2);
+}
+
+/* --- COULEURS DES MARQUES (FontAwesome est monochrome par défaut) --- */
+.fa-html5 { color: #E34F26; }
+.fa-css3-alt { color: #1572B6; }
+.fa-js { color: #F7DF1E; }
+.fa-php { color: #777BB4; }
+.fa-python { color: #3776AB; }
+.fa-r-project { color: #276DC3; }
+.fa-database { color: #336791; } /* Pour SQL/Postgre */
+.fa-github { color: #181717; }
+.fa-linux { color: #FCC624; } /* Pour Linux/Bash si besoin */
+.fa-bootstrap { color: #7952B3; }
+
+/* --- STYLE DU PARCOURS (Timeline Cards) --- */
+
+.resume-card {
+    background: white;
+    padding: 20px 25px;
+    border-radius: 8px;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+    border: 1px solid rgba(0,0,0,0.03);
+}
+
+.resume-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+}
+
+/* Bordure Orange pour les Expériences */
+.resume-card.work {
+    border-left: 5px solid var(--bs-secondary);
+}
+
+/* Bordure Bleue pour les Formations */
+.resume-card.education {
+    border-left: 5px solid var(--bs-primary);
+}
+
+/* Style des logos entreprises/écoles */
+.resume-logo {
+    width: 50px;
+    height: 50px;
+    object-fit: contain;
+    margin-left: 15px;
+    border-radius: 4px; /* Optionnel : coins légèrement arrondis */
+}
+
+/* Liste à puces personnalisée */
+.resume-list {
+    padding-left: 1rem;
+    margin-top: 10px;
+    margin-bottom: 0;
+}
+
+.resume-list li {
+    font-size: 0.95rem;
+    color: #555;
+    margin-bottom: 5px;
+}

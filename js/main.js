@@ -46,9 +46,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 <div class="card h-100 shadow-sm">
                     <a href="${project.lien.url}" ${linkTarget} class="project-link" title="Voir le détail du projet">
                         <img src="${project.image}" class="card-img-top" alt="${project.titre}">
-                        <div class="hover-overlay">
-                            <i class="fas fa-external-link-alt"></i>
-                        </div>
                     </a>
                     <div class="card-body">
                         <h5 class="card-title">${project.titre}</h5>
